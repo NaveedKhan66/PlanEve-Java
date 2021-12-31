@@ -1,18 +1,13 @@
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.xml.namespace.QName;
-
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
 
 public class startPage implements ActionListener {
 
@@ -35,9 +30,14 @@ public class startPage implements ActionListener {
             fr.setVisible(true);
             fr.setLayout(new GridBagLayout());
             vendorLogin = new JButton("Vendor Login");
+            
             vendorSignUp = new JButton("Vendor SignUp");
+            vendorSignUp.addActionListener(this);
+            
             userLogin = new JButton("User Login");
+            
             userSignUp = new JButton("User SignUp");
+            userSignUp.addActionListener(this);
 
             JPanel buttonPanel =new ImagePanel(myImage);
             buttonPanel.add(vendorSignUp);
@@ -57,31 +57,16 @@ public class startPage implements ActionListener {
         String command=e.getActionCommand();
         
         if(command=="Vendor SignUp"){
-
+            vendorSignUp frame=new vendorSignUp();
         }
         else if(command=="Vendor Login"){
 
         }
         else if(command=="User SignUp"){
-
+            userSignUp frame=new userSignUp();
         }
         else if(command =="User Login"){
-            
+
         }
-    }
-}
-
-class ImagePanel extends JPanel {
-    private Image image;
-
-    public ImagePanel(Image image) {
-        this.image = image;
-        this.setLayout(new GridBagLayout());
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
 }
