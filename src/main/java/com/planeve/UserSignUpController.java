@@ -1,8 +1,6 @@
 package com.planeve;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class UserSignUpController
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/UserSignUpController")
+public class UserSignUpController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public UserSignUpController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +26,16 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//PrintWriter pw = response.getWriter();
-		//pw.write(request.getAttribute("loginType"));
-		if(request.getParameter("loginType").equals("user"))
-			response.sendRedirect("userLogin.jsp");
-		else response.sendRedirect("serviceProviderLogin.jsp");
+		String name = (String) request.getAttribute("name");
+		String phoneNo = (String) request.getAttribute("phoneNo");
+		String email = (String) request.getAttribute("email");
+		String username = (String) request.getAttribute("username");
+		String password = (String) request.getAttribute("password");
+		
+		//create a user in the database
+		
+		//return user object
+		response.getWriter().write(new User(name, email, phoneNo, username, password).toString());
 	}
 
 	/**

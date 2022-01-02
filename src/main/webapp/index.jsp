@@ -7,7 +7,7 @@
 <title>PlanEve</title>
 </head>
 <body>
-	<form action ="userLogin" method="get">	
+	<form action ="login" method="get">	
 		<input type="radio" id="loginType" name="loginType" value="user">
 		<label for="user">Login as User</label><br>
 		<input type="radio" id="loginType" name="loginType" value="serviceProvider">

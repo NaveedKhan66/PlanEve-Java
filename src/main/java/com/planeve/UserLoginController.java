@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class UserLoginController
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/UserLoginController")
+public class UserLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public UserLoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +28,8 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//PrintWriter pw = response.getWriter();
-		//pw.write(request.getAttribute("loginType"));
-		if(request.getParameter("loginType").equals("user"))
-			response.sendRedirect("userLogin.jsp");
-		else response.sendRedirect("serviceProviderLogin.jsp");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -40,7 +37,9 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		PrintWriter out = response.getWriter();
+		out.write("Suck sess");
+				
 	}
 
 }

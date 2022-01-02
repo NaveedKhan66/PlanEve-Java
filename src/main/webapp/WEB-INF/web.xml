@@ -10,11 +10,31 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   <servlet>
-  <servlet-name>loginController</servlet-name>
+  <servlet-name>login</servlet-name>
   <servlet-class>com.planeve.LoginController</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>loginController</servlet-name>
+  <servlet-name>login</servlet-name>
+  <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>userLogin</servlet-name>
+  <servlet-class>com.planeve.UserLoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>userLogin</servlet-name>
   <url-pattern>/userLogin</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>userSignUp</servlet-name>
+  <servlet-class>com.planeve.UserSignUpController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>userSignUp</servlet-name>
+  <url-pattern>/userSignUp</url-pattern>
+  </servlet-mapping>
+  
+
 </web-app>
