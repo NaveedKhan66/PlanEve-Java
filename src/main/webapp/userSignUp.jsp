@@ -8,12 +8,12 @@
 </head>
 <body>
 <form action="userSignUp" method="post" >
-		<label>Name: </label><input name="name"></input>
-		<label>Phone No: </label><input name="phoneNo"></input>
-		<label>Email: </label><input name="email"></input>
-		<label>Username: </label><input name="username"></input>
-		<label>Password: </label><input name="password"></input>
-		<button type="submit">Login</button>
+		<label>Name: </label><input id="name" name="name"></input>
+		<label>Phone No: </label><input id="phoneNo" name="phoneNo"></input>
+		<label>Email: </label><input name="email" id="email"></input>
+		<label>Username: </label><input name="username" id="username"></input>
+		<label>Password: </label><input name="password" id="password"></input>
+		<button type="submit">Sign Up</button>
 		<label>Already have an account? Click <a href="/PlanEve/userLogin.jsp">here </a> to Login</label> 	
 	</form>
 </body>

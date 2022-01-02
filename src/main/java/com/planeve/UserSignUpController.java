@@ -26,24 +26,25 @@ public class UserSignUpController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = (String) request.getAttribute("name");
-		String phoneNo = (String) request.getAttribute("phoneNo");
-		String email = (String) request.getAttribute("email");
-		String username = (String) request.getAttribute("username");
-		String password = (String) request.getAttribute("password");
 		
-		//create a user in the database
-		
-		//return user object
-		response.getWriter().write(new User(name, email, phoneNo, username, password).toString());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String name = (String) request.getParameter("name");
+		String phoneNo = (String) request.getParameter("phoneNo");
+		String email = (String) request.getParameter("email");
+		String username = (String) request.getParameter("username");
+		String password = (String) request.getParameter("password");
+		
+		
+		//return user object
+		User user = new User(name, email, phoneNo, username, password);
+		request.getSession().setAttribute("user", user);
+		
+		response.sendRedirect("/PlanEve/viewCategories.jsp");
 	}
 
 }
