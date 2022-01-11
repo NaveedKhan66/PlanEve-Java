@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-	User user =User.class.cast(session.getAttribute("user"));
+	User user = User.class.cast(session.getAttribute("user"));
 	
 %>
 	<label>Hello: </label>

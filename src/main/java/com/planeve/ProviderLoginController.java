@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserLoginController
+ * Servlet implementation class ProviderLoginController
  */
-@WebServlet("/UserLoginController")
-public class UserLoginController extends HttpServlet {
+@WebServlet("/ProviderLoginController")
+public class ProviderLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserLoginController() {
+    public ProviderLoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,7 +38,7 @@ public class UserLoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Suck sess");
+		System.out.println("provider sucksess");
 		
 		String name = "Tempory-user-till-we-connect-db";
 		String phoneNo = "00000000000";
@@ -49,8 +49,8 @@ public class UserLoginController extends HttpServlet {
 		
 		//return user object
 		User user = new User(name, email, phoneNo, username, password);
-		request.getSession().setAttribute("user", user);		
-		response.sendRedirect("/PlanEve/viewCategories.jsp");
+		request.getSession().setAttribute("user", user);
+		response.sendRedirect("/PlanEve/addCategories.jsp");
 	}
 
 }

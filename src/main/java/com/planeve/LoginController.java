@@ -32,7 +32,7 @@ public class LoginController extends HttpServlet {
 		//pw.write(request.getAttribute("loginType"));
 		if(request.getParameter("loginType").equals("user"))
 			response.sendRedirect("userLogin.jsp");
-		else response.sendRedirect("serviceProviderLogin.jsp");
+		else response.sendRedirect("providerLogin.jsp");
 	}
 
 	/**
