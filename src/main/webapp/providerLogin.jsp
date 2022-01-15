@@ -22,7 +22,7 @@
 </head>
 <body style="background-image:url('css/indexPage.jpg')">
 <p class="name-tag">Welcome to PlanEve!</p>
-<form action="ProviderLogin" method="post" >
+<form action="providerLogin" method="post" >
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
