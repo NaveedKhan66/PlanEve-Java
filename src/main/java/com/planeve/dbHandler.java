@@ -140,7 +140,7 @@ public class dbHandler {
                         "select * from Users where username=?",
                         ResultSet.TYPE_SCROLL_SENSITIVE,
                         ResultSet.CONCUR_UPDATABLE);
-                s.setString(4, username);
+                s.setString(1, username);
                 ResultSet rs = s.executeQuery();
                 User usr = new User();
                 if (rs.next()) {
@@ -190,6 +190,127 @@ public class dbHandler {
     }
 
 //Provider Side-----------------------------------------------------------------------------------
+    
+    public static boolean createProvider(provider p) {
+        try {
+            if (createConnection()) {
+                PreparedStatement s = connection.prepareStatement(
+                        "SELECT * FROM Providers",
+                        ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+
+                ResultSet rs = s.executeQuery();
+                rs.moveToInsertRow();
+
+                rs.updateString(1, p.name);
+                rs.updateString(2, p.email);
+                rs.updateString(3, p.password);
+                rs.updateString(4, p.username);
+                rs.updateString(5, p.type);
+                rs.updateString(6, p.description);
+                
+                rs.insertRow();
+                rs.moveToCurrentRow();
+                if (rs.rowInserted()) {
+                    return true;
+                }
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    public static provider getProvider(String username) {
+        try {
+            if (createConnection()) {
+                PreparedStatement s = connection.prepareStatement(
+                        "select * from Providers where username=?",
+                        ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                s.setString(1, username);
+                ResultSet rs = s.executeQuery();
+                provider p = new provider();
+                if (rs.next()) {
+                    p.name = rs.getString("name");
+                    p.email = rs.getString("email");
+                    p.password = rs.getString("password");
+                    p.username = rs.getString("username");
+                    p.type = rs.getString("type");
+                    p.description = rs.getString("description");
+                    closeConnection();
+                    return p;
+                }
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    public static provider authenticateProvider(String username, String password) {
+        try {
+            if (createConnection()) {
+                PreparedStatement s = connection.prepareStatement(
+                        "select * from Providers where username=? and password=?",
+                        ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                s.setString(1, username);
+                s.setString(2, password);
+                ResultSet rs = s.executeQuery();
+                provider p = new provider();
+                if (rs.next()) {
+                    p.name = rs.getString("name");
+                    p.email = rs.getString("email");
+                    p.password = rs.getString("password");
+                    p.username = rs.getString("username");
+                    p.type = rs.getString("type");
+                    p.description = rs.getString("description");
+                    
+                    closeConnection();
+                    return p;
+                }
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public static boolean updateProviderDescription(String username, String description) {
+        try {
+            if (createConnection()) {
+                PreparedStatement s = connection.prepareStatement(
+                        "SELECT * FROM Providers where username=?",
+                        ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                s.setString(1, username);
+                ResultSet rs = s.executeQuery();       
+
+                if(rs.next()) {
+	            	 rs.updateString(6, description);
+	                 
+	                 rs.updateRow();
+	               
+	                 if (rs.rowUpdated()) {
+	                     return true;
+	                 }
+                }
+               
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
     
     
     // public User updateUser(User usr) {
