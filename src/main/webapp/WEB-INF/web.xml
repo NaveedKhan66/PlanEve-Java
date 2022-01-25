@@ -47,7 +47,7 @@
   
   <servlet>
   <servlet-name>providerSignUp</servlet-name>
-  <servlet-class>com.planeve.providerSignUpController</servlet-class>
+  <servlet-class>com.planeve.ProviderSignUpController</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>providerSignUp</servlet-name>

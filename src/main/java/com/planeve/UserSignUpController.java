@@ -42,6 +42,7 @@ public class UserSignUpController extends HttpServlet {
 		
 		//return user object
 		User user = new User(name, email, phoneNo, username, password);
+		dbHandler.createUser(user);
 		request.getSession().setAttribute("user", user);
 		
 		response.sendRedirect("/PlanEve/viewCategories.jsp");

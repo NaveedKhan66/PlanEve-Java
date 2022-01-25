@@ -40,16 +40,14 @@ public class UserLoginController extends HttpServlet {
 		
 		System.out.println("Suck sess");
 		
-		String name = "Tempory-user-till-we-connect-db";
-		String phoneNo = "00000000000";
-		String email = "nhaan@kugg-inc.com";
 		String username = (String) request.getParameter("username");
 		String password = (String) request.getParameter("password");
 		
+		User user=dbHandler.authenticate(username,password);
+		request.getSession().setAttribute("user", user);	
 		
-		//return user object
-		User user = new User(name, email, phoneNo, username, password);
-		request.getSession().setAttribute("user", user);		
+		
+				
 		response.sendRedirect("/PlanEve/viewCategories.jsp");
 	}
 
