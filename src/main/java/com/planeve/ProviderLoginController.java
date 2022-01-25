@@ -50,7 +50,7 @@ public class ProviderLoginController extends HttpServlet {
 		//return user object
 		User user = new User(name, email, phoneNo, username, password);
 		request.getSession().setAttribute("user", user);
-		response.sendRedirect("/PlanEve/addCategories.jsp");
+		response.sendRedirect("/PlanEve/viewServiceProviderProfile.jsp");
 	}
 
 }

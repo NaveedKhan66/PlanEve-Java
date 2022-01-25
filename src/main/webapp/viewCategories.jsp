@@ -10,6 +10,9 @@
 <body>
 <%
 	User user = User.class.cast(session.getAttribute("user"));
+	if(user==null){
+		response.sendRedirect("/PlanEve/userLogin.jsp");
+	}
 	
 %>
 	<label>Hello: </label>
