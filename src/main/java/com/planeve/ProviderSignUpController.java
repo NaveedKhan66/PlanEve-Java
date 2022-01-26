@@ -38,13 +38,16 @@ public class ProviderSignUpController extends HttpServlet {
 		String email = (String) request.getParameter("email");
 		String username = (String) request.getParameter("username");
 		String password = (String) request.getParameter("password");
+		String type = (String) request.getParameter("type");
+		String description = (String) request.getParameter("description");
 		
-		
+
 		//return user object
-		User user = new User(name, email, phoneNo, username, password);
-		request.getSession().setAttribute("user", user);
+		provider p = new provider(name, email, username, password, type, description);
+		dbHandler.createProvider(p);
+		request.getSession().setAttribute("provider", p);
 		
-		response.sendRedirect("/PlanEve/addCategories.jsp");
+		response.sendRedirect("/PlanEve/viewServiceProviderProfile.jsp");
 	}
 
 }
