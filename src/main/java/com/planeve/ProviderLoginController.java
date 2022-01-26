@@ -38,19 +38,14 @@ public class ProviderLoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("provider sucksess");
+		System.out.println("provider success");
 		
-		String name = "Tempory-user-till-we-connect-db";
-		String phoneNo = "00000000000";
-		String email = "nhaan@kugg-inc.com";
 		String username = (String) request.getParameter("username");
 		String password = (String) request.getParameter("password");
 		
-		
-		//return user object
-		User user = new User(name, email, phoneNo, username, password);
-		request.getSession().setAttribute("user", user);
-		response.sendRedirect("/PlanEve/addCategories.jsp");
+		provider p = (provider) dbHandler.authenticateProvider(username, password);
+		request.getSession().setAttribute("provider", p);
+		response.sendRedirect("/PlanEve/viewServiceProviderProfile.jsp");
 	}
 
 }
